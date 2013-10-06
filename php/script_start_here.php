@@ -22,17 +22,6 @@ $port = "3306";
 
 $short_connect = new mysqli($host_name, $user_name, $pass_word, $database_name, $port);
 
-//get all tables in the database
-$sql = "SHOW TABLES";
-
-//get column information from a table in the database
-//$sql="SELECT COLUMN_KEY, COLUMN_NAME, COLUMN_TYPE FROM information_schema.COLUMNS WHERE TABLE_NAME = 'books'";
-
-//SQL statement for a table in the database
-//$sql = "SELECT * FROM phonebook WHERE id <= 10";	
-
-//result is boolean for query other than SELECT, SHOW, DESCRIBE and EXPLAIN
-
 function incomingCallQuery($mobile) 
 {
 	global $short_connect;
@@ -99,26 +88,6 @@ function generateMessage($month, $block, $itemDetails)
 //Input to this function is a mobile number - we just used some sample data from out db
 incomingCallQuery("31163");
 
-/*
-$result = $short_connect->query($sql);
-
-if (($result) && ($result->num_rows > 0))
-{
-	$results = array();
-
-	//convert query result into an associative array
-	while ($row = $result->fetch_assoc())
-	{
-		$results[] = $row;
-	}
-
-	//dump all data from associative array converted from query result
-	new dBug($results);   
-
-	$result->free();
-
-}
-*/
 $short_connect->close();
 
 
